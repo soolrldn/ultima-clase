@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex — Biblioteca UI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* =========================================================
+     ESTILOS EXCLUSIVOS DE LA BIBLIOTECA (no tocan styles.css)
+     Reutilizan las mismas variables/tokens del sistema.
+     ========================================================= */
+  .lib-header {
+    padding: 0 var(--space-6);
+  }
+  .lib-header .tag {
+    color: var(--c-accent-hover);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+  .lib-hero {
+    padding: var(--space-12) 0 var(--space-6);
+    border-bottom: 1px solid rgba(246, 246, 254, 0.08);
+  }
+  .lib-header h1 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  .lib-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding: var(--space-2) 0;
+  }
+  .lib-nav a {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: var(--c-text-muted-on-dark);
+    transition: color var(--transition-fast);
+  }
+  .lib-nav a:hover { color: var(--c-accent-hover); }
+
+  .lib-section {
+    padding-block: var(--space-10);
+  }
+  .lib-section-light {
+    background: var(--c-offwhite);
+    color: var(--c-text-on-light);
+  }
+  .lib-section-title {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-1);
+  }
+  .lib-section-desc {
+    color: var(--c-text-muted-on-dark);
+    font-size: 1rem;
+    max-width: 70ch;
+    margin-bottom: var(--space-6);
+  }
+  .lib-section-light .lib-section-desc { color: var(--c-text-muted-on-light); }
+
+  .lib-block {
+    margin-bottom: var(--space-8);
+  }
+  .lib-block:last-child { margin-bottom: 0; }
+  .lib-block-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-accent-hover);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    display: block;
+  }
+  .lib-section-light .lib-block-label { color: var(--c-accent); }
+
+  /* Tarjeta contenedora que muestra la muestra + su ficha técnica */
+  .swatch-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-3);
+  }
+  .swatch {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(246,246,254,0.12);
+  }
+  .swatch-color {
+    height: 84px;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-2);
+  }
+  .swatch-info {
+    padding: var(--space-2) var(--space-3) var(--space-3);
+    background: var(--c-black-soft);
+  }
+  .swatch-name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .swatch-code {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.8125rem;
+    color: var(--c-text-muted-on-dark);
+  }
+
+  /* Fichas de tipografía */
+  .type-sample {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid rgba(246,246,254,0.08);
+  }
+  .lib-section-light .type-sample { border-bottom-color: rgba(24,24,26,0.1); }
+  .type-sample-meta {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.8125rem;
+    color: var(--c-text-muted-on-dark);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .lib-section-light .type-sample-meta { color: var(--c-text-muted-on-light); }
+
+  /* Grid genérica de demos */
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-4);
+  }
+  .demo-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: 1px dashed rgba(246,246,254,0.15);
+    border-radius: var(--radius-md);
+  }
+  .lib-section-light .demo-cell { border-color: rgba(24,24,26,0.15); }
+  .demo-cell-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--c-text-muted-on-dark);
+  }
+  .lib-section-light .demo-cell-label { color: var(--c-text-muted-on-light); }
+
+  .btn-dark-bg { background: var(--c-black); padding: var(--space-4); border-radius: var(--radius-md); }
+
+  .img-frame {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--c-black-soft);
+  }
+  .img-frame img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
+
+  .lib-footer {
+    padding: var(--space-6) 0;
+    text-align: center;
+    color: var(--c-text-muted-on-dark);
+    font-size: 0.875rem;
+  }
+</style>
+</head>
+<body class="section-dark">
+
+  <!-- ============ HEADER DE LA BIBLIOTECA ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="container header-inner">
+        <a href="index.html" class="logo" aria-label="Apex — inicio">
+        <svg viewBox="0 0 1177.86 209.25" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M153.74,0h86.9l59.87,209.25h-70.04l-9.88-38.07H63.55l34.64,10.68-17.98,27.39H0L153.74,0ZM208.08,122.06l-20.05-77.01-50.57,77.01h70.62Z"/>
+          <path d="M362.98,0h145.89c67.13,0,94.16,30.81,83.41,83.99-9.01,44.46-48.82,72.07-102.3,72.07h-91.84l-11.33,53.18h-68.88L362.98,0ZM489.11,102.01c22.67,0,34.29-5.52,38.36-23.25,3.78-17.44-5.52-23.54-28.19-23.54h-79.34l-10.17,46.79h79.34Z"/>
+          <path d="M637.31,0h213.31l-10.75,51.44h-143.86l-6.39,29.35h137.46l-9.88,47.08h-137.46l-6.39,29.93h143.86l-10.75,51.44h-213.9L637.31,0Z"/>
+          <path d="M957.28,101.72L875.03,0h80.79l50.57,66.84L1084.86,0h93l-133.1,110.44,80.5,98.81h-81.37l-51.73-66.55-75.56,66.55h-93.29l133.98-107.53Z"/>
+        </svg>
+        </a>
+      
+    <nav class="primary-nav" id="primary-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#tipografia">Tipografía</a></li>
+        <li><a href="#colores">Colores</a></li>
+        <li><a href="#botones">Botones</a></li>
+        <li><a href="#imagenes">Imágenes</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#formularios">Inputs</a></li>
+        <li><a href="#misc">Otros</a></li>
+      </ul>
+    </nav>
+    </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    
+    <section class=" lib-hero">
+      <div class="container">
+        <h1 class="lib-header h1">Biblioteca <span class="text-accent">UI</span></h1>
+      </div>
+    </section>
+
+    <!-- ============ TIPOGRAFÍA ============ -->
+    <section class="lib-section section-dark" id="tipografia">
+      <div class="container">
+        <h2 class="lib-section-title">Tipografía</h2>
+        <p class="lib-section-desc">Dos familias: <strong>Space Grotesk</strong> e <strong>Inter</strong>.</p>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Escala de jerarquías</span>
+
+          <div class="type-sample">
+            <h1 style="font-size: clamp(2.75rem, 2rem + 4vw, 6rem);">Título H1</h1>
+            <span class="type-sample-meta">Space Grotesk · 700<br>clamp(2.75rem, 2rem+4vw, 6rem) · uppercase · ls -0.04em</span>
+          </div>
+
+          <div class="type-sample">
+            <h2>Título H2</h2>
+            <span class="type-sample-meta">Space Grotesk · 600<br>clamp(1.875rem, 1.25rem+2.2vw, 3rem) · uppercase · ls -0.03em</span>
+          </div>
+
+          <div class="type-sample">
+            <h3 style="font-size:1.5rem;">Título H3 (subtítulo de sección)</h3>
+            <span class="type-sample-meta">Inter · 600 · 1.5rem<br>uppercase · ls 0.02em</span>
+          </div>
+
+          <div class="type-sample">
+            <h4 style="font-size:1.25rem;">Título H4</h4>
+            <span class="type-sample-meta">Inter · 600 · 1.25rem</span>
+          </div>
+
+          <div class="type-sample">
+            <p class="statement" style="font-size:2.25rem;">Destacado</p>
+            <span class="type-sample-meta">Space Grotesk · 700 · 72px (desktop)<br>uppercase — usado en Ghost Pilots</span>
+          </div>
+
+          <div class="type-sample">
+            <p style="font-size:1.125rem;">Texto lead / intro de sección (hero-sub, section-head p)</p>
+            <span class="type-sample-meta">Inter · 400 · 1.125rem</span>
+          </div>
+
+          <div class="type-sample">
+            <p style="font-size:1.0625rem;">Párrafo de cuerpo estándar</p>
+            <span class="type-sample-meta">Inter · 400 · 1.0625rem</span>
+          </div>
+
+          <div class="type-sample">
+            <p style="font-size:0.9375rem;">Texto pequeño / nav / labels</p>
+            <span class="type-sample-meta">Inter · 500 · 0.9375rem</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COLORES ============ -->
+    <section class="lib-section section-dark" id="colores">
+      <div class="container">
+        <h2 class="lib-section-title">Paleta de <span class="text-accent">colores</span></h2>
+        <p class="lib-section-desc">Base neutra oscura + un violeta de marca como único acento. Los textos usan variantes "muted" según el fondo (claro/oscuro).</p>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Base</span>
+          <div class="swatch-row">
+            <div class="swatch">
+              <div class="swatch-color" style="background:#18181A;"></div>
+              <div class="swatch-info"><span class="swatch-name">Black</span><span class="swatch-code">#18181A</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:#232327;"></div>
+              <div class="swatch-info"><span class="swatch-name">Black soft</span><span class="swatch-code">#232327</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:#F6F6FE;"></div>
+              <div class="swatch-info"><span class="swatch-name">Off-white</span><span class="swatch-code">#F6F6FE</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:#FFFFFF; border-bottom:1px solid #eee;"></div>
+              <div class="swatch-info"><span class="swatch-name">White</span><span class="swatch-code">#FFFFFF</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Acento</span>
+          <div class="swatch-row">
+            <div class="swatch">
+              <div class="swatch-color" style="background:#5900D8;"></div>
+              <div class="swatch-info"><span class="swatch-name">Accent</span><span class="swatch-code">#5900D8</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:#7B1FF0;"></div>
+              <div class="swatch-info"><span class="swatch-name">Accent hover</span><span class="swatch-code">#7B1FF0</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:rgba(89,0,216,0.35);"></div>
+              <div class="swatch-info"><span class="swatch-name">Accent soft</span><span class="swatch-code">rgba(89,0,216,.35)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Texto</span>
+          <div class="swatch-row">
+            <div class="swatch">
+              <div class="swatch-color" style="background:#232327;"><span style="color:#F6F6FE; font-size:0.875rem;">Aa</span></div>
+              <div class="swatch-info"><span class="swatch-name">Texto on-dark</span><span class="swatch-code">#F6F6FE</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:#232327;"><span style="color:rgba(246,246,254,0.72); font-size:0.875rem;">Aa</span></div>
+              <div class="swatch-info"><span class="swatch-name">Muted on-dark</span><span class="swatch-code">rgba(246,246,254,.72)</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:#F6F6FE;"><span style="color:#18181A; font-size:0.875rem;">Aa</span></div>
+              <div class="swatch-info"><span class="swatch-name">Texto on-light</span><span class="swatch-code">#18181A</span></div>
+            </div>
+            <div class="swatch">
+              <div class="swatch-color" style="background:#F6F6FE;"><span style="color:#54545F; font-size:0.875rem;">Aa</span></div>
+              <div class="swatch-info"><span class="swatch-name">Muted on-light</span><span class="swatch-code">#54545F</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOTONES ============ -->
+    <section class="lib-section section-dark" id="botones">
+      <div class="container">
+        <h2 class="lib-section-title">Botones</h2>
+        <p class="lib-section-desc">Pill-shaped con esquina superior derecha e inferior izquierda recortadas (16px 0 16px 0). Al hover invierten fondo/color y "dibujan" un anillo cónico alrededor del borde.</p>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Btn Primary — estado normal / hover</span>
+          <div class="demo-grid">
+            <div class="demo-cell">
+              <span class="demo-cell-label">Normal</span>
+              <a href="#" class="btn btn-primary">Reservá tu simulador <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+            <div class="demo-cell">
+              <span class="demo-cell-label">Hover (pasá el mouse)</span>
+              <a href="#" class="btn btn-primary">Hacé hover acá <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Btn Light (sobre fondos oscuros/imagen)</span>
+          <div class="demo-grid">
+            <div class="demo-cell btn-dark-bg">
+              <span class="demo-cell-label">Normal</span>
+              <a href="#" class="btn btn-light">Ver más <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Tamaño small (btn-sm)</span>
+          <div class="demo-grid">
+            <div class="demo-cell">
+              <a href="#" class="btn btn-primary btn-sm">Botón chico</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Botones circulares — flechas de carrusel</span>
+          <div class="demo-grid">
+            <div class="demo-cell" style="flex-direction:row; align-items:center;">
+              <button class="carousel-arrow" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="carousel-arrow" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="carousel-arrow" disabled aria-label="Deshabilitado"><svg viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMÁGENES ============ -->
+    <section class="lib-section section-dark" id="imagenes">
+      <div class="container">
+        <h2 class="lib-section-title">Tratamiento de imágenes</h2>
+        
+        <div class="lib-block">
+          <span class="lib-block-label">Media con borde de marca (diff-media / contact-media)</span>
+          <div class="demo-grid">
+            <div class="img-frame" style="border:2px solid var(--c-accent); border-radius:var(--radius-lg);">
+              <img src="assets/equal-grid.png" alt="Simulador de carreras" style="aspect-ratio:16/9;">
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Ratios de galería (gallery-item)</span>
+          <div class="demo-grid">
+            <div class="img-frame" style="border:2px solid var(--c-accent);"><img src="assets/galeria-03.png" style="aspect-ratio:4/5;" alt=""></div>
+            <div class="img-frame" style="border:2px solid var(--c-accent);"><img src="assets/galeria-03.png" style="aspect-ratio:4/5;"></div>
+            <div class="img-frame" style="border:2px solid var(--c-accent);"><img src="assets/galeria-03.png" style="aspect-ratio:4/5;"></div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Imagen con overlay de texto (team-card / stat-reveal)</span>
+          <div class="demo-grid">
+            <li class="stats-carousel-card team-card" style="max-height: 480px; max-width: 384px">
+            <button class="stat-reveal" type="button">
+              <img src="assets/rodrigo-salas.png" alt="Rodrigo Salas" loading="lazy" class="placeholder-gray">
+              <span class="stat-reveal-hint" aria-hidden="true">+</span>
+              <span class="stat-reveal-overlay">
+                <span class="team-name">Rodrigo Salas</span>
+                <span class="team-role">Director Técnico y head coach de pilotaje</span>
+              </span>
+            </button>
+          </li>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ CARDS ============ -->
+    <section class="lib-section section-dark" id="cards">
+      <div class="container">
+        <h2 class="lib-section-title">Cards</h2>
+        <p class="lib-section-desc">Distintas variantes de tarjetas según contexto: informativas violeta, flip-card con reverso, objetivo con hover invertido, testimonio, y pricing.</p>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Card Purple (genérica — tecnología)</span>
+          <div class="demo-grid">
+            <div class="card card-purple" style="max-width:300px;">
+              <svg class="card-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+              <h3 style="text-transform:none; font-size:1.125rem; margin-top: var(--space-2);">Telemetría real</h3>
+              <p>Datos de sensor en vivo comparables a los del auto real.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Flip Card (hover / tap para dar vuelta)</span>
+          <div class="demo-grid">
+            <button class="flip-card-trigger" style="max-width:280px;" onclick="this.classList.toggle('is-flipped')">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="assets/tec-direct-drive.png" alt="">
+                  <span class="flip-card-cta">Ver detalle <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+                <div class="flip-card-back">
+                  <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+                  <h3 style="text-transform:none;">Reverso de la card</h3>
+                  <p>Info adicional que aparece al girar.</p>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="lib-block lib-section-light" style="padding:var(--space-5); border-radius:var(--radius-md); margin-inline:-1px;">
+          <span class="lib-block-label">Objetivos (hover invierte a violeta) — fondo claro</span>
+          <div class="demo-grid">
+            <div class="objective-card" style="max-width:280px;">
+              <p class="objective-num">01</p>
+              <h4 class="objective-title">Diagnóstico técnico</h4>
+              <p class="section-paragraph">Evaluación inicial de nivel y objetivos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Testimonios</span>
+          <div class="demo-grid">
+            <blockquote class="testimonial" style="max-width:340px;">
+              <div class="testimonial-card">
+                <svg class="testimonial-quote" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6c-2.2 0-4 1.8-4 4v8h8v-8H7.6c.2-1.7 1.6-3 3.4-3V6H7Zm10 0c-2.2 0-4 1.8-4 4v8h8v-8h-3.4c.2-1.7 1.6-3 3.4-3V6h-4Z"/></svg>
+                <p>"Bajé 1.2 segundos por vuelta en tres semanas de entrenamiento."</p>
+                <footer>
+                  <cite>Nombre Apellido</cite>
+                  <span>Categoría / equipo</span>
+                </footer>
+              </div>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Pricing Card</span>
+          <div>
+            <div class="pricing-card">
+              <ul class="pricing-includes">
+                <h3 class="pricing-includes-title">Qué incluye</h3>
+                <li>Acceso a simuladores profesionales</li>
+                <li>Telemetría y análisis de datos</li>
+                <li>Sesión con instructor</li>
+              </ul>
+              <div class="pricing-box">
+                <span class="pricing-label">Desde</span>
+                <span class="pricing-amount">$45.000</span>
+                <span class="pricing-detail">por mes</span>
+                <a href="#" class="btn btn-primary">Quiero sumarme</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Timeline expandible — plan de estudios</span>
+          <div style="display:flex; border:1px solid var(--c-black); border-radius:var(--radius-md); overflow:hidden; background:var(--c-offwhite);">
+            <div class="curr-item">
+          <div class="curr-num">
+            <p class="curr-num-label">M01</p>
+          </div>
+          <div class="curr-content">
+            <h3>Fundamentos Técnicos</h3>
+            <p class="curr-difficulty">Dificultad: <span>Inicial</span></p>
+            <p class="curr-weeks">Semana 1 – 3</p>
+
+            <p class="curr-block-label">Habilidades Adquiridas</p>
+            <ul class="curr-list">
+              <li>Setup de cockpit</li>
+              <li>Ergonomía de pilotaje</li>
+              <li>Lectura básica de telemetría</li>
+              <li>Técnica de frenada</li>
+              <li>Control de aceleración</li>
+            </ul>
+
+            <p class="curr-block-label">Métricas del Piloto</p>
+            <ul class="curr-metrics">
+              <li><span class="metric-name">Consistencia</span><span class="metric-bar"><span style="width:75%"></span></span><span class="metric-value">+30</span></li>
+              <li><span class="metric-name">Precisión</span><span class="metric-bar"><span style="width:62%"></span></span><span class="metric-value">+25</span></li>
+              <li><span class="metric-name">Control</span><span class="metric-bar"><span style="width:50%"></span></span><span class="metric-value">+20</span></li>
+              <li><span class="metric-name">Confianza</span><span class="metric-bar"><span style="width:25%"></span></span><span class="metric-value">+10</span></li>
+            </ul>
+          </div>
+        </div>
+            
+            <div class="curr-item">
+          <div class="curr-num">
+            <p class="curr-num-label">M02</p>
+          </div>
+          <div class="curr-content">
+            <h3>Rendimiento Bajo Análisis</h3>
+            <p class="curr-difficulty">Dificultad: <span>Intermedia</span></p>
+            <p class="curr-weeks">Semana 4 – 6</p>
+
+            <p class="curr-block-label">Habilidades Adquiridas</p>
+            <ul class="curr-list">
+              <li>Análisis de telemetría avanzada</li>
+              <li>Detección de pérdidas de tiempo</li>
+              <li>Gestión del error</li>
+              <li>Rutinas de foco</li>
+              <li>Trabajo con coach</li>
+            </ul>
+
+            <p class="curr-block-label">Métricas del Piloto</p>
+            <ul class="curr-metrics">
+              <li><span class="metric-name">Ritmo</span><span class="metric-bar"><span style="width:75%"></span></span><span class="metric-value">+30</span></li>
+              <li><span class="metric-name">Consistencia</span><span class="metric-bar"><span style="width:62%"></span></span><span class="metric-value">+25</span></li>
+              <li><span class="metric-name">Precisión</span><span class="metric-bar"><span style="width:50%"></span></span><span class="metric-value">+20</span></li>
+              <li><span class="metric-name">Análisis</span><span class="metric-bar"><span style="width:37%"></span></span><span class="metric-value">+15</span></li>
+            </ul>
+          </div>
+        </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORMULARIOS ============ -->
+    <section class="lib-section section-dark" id="formularios">
+      <div class="container">
+        <h2 class="lib-section-title">Inputs</h2>
+        <p class="lib-section-desc">Inputs planos sobre fondo negro, borde sutil que se activa en violeta al foco.</p>
+
+        <div class="lib-block" style="max-width:420px;">
+          <div class="contact-form-container" style="border-radius:var(--radius-md);">
+            <div class="form-group">
+              <label class="form-label">Nombre</label>
+              <input class="form-input" type="text" placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-input" type="email" placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <div class="textarea-label-wrapper">
+                <label class="form-label">Mensaje</label>
+                <span class="char-counter">0/300</span>
+              </div>
+              <textarea class="form-input form-textarea w-full" placeholder="Contanos qué necesitás"></textarea>
+            </div>
+            <p class="form-disclaimer-required">* Campos obligatorios</p>
+            <p class="form-disclaimer-privacy">Al enviar aceptás nuestra política de privacidad.</p>
+            <a href="#" class="btn btn-primary w-full" style="justify-content:center;">Enviar mensaje</a>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Newsletter input (pill)</span>
+          <div class="newsletter-input-wrap" style="max-width:360px;">
+            <input type="email" placeholder="tu@email.com">
+            <button aria-label="Suscribirme">→</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ OTROS COMPONENTES ============ -->
+    <section class="lib-section section-dark" id="misc">
+      <div class="container">
+        <h2 class="lib-section-title">Otros componentes</h2>
+
+        <div class="lib-block" style="border-radius:var(--radius-md);">
+          <span class="lib-block-label">Acordeón - preguntas frecuentes</span>
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-1">
+              <span class="faq-number">01</span>
+              <span class="faq-question">¿Necesito experiencia previa para aplicar?</span>
+              <span class="faq-icon-wrapper">
+                <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-panel" id="faq-answer-1" hidden>
+              <div class="faq-content">
+                <p>No es un requisito excluyente, pero sí buscamos participantes con motivación y disciplina. El Módulo 1 está diseñado para establecer bases técnicas sólidas desde cero, pero el programa exige compromiso y disposición para trabajar con datos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Métrica con barra de progreso (curr-metrics)</span>
+          <ul class="curr-metrics" style="max-width:280px; background:var(--c-offwhite); padding:var(--space-3); border-radius:var(--radius-sm);">
+            <li>
+              <span class="metric-name" style="color:var(--c-text-muted-on-light);">Consistencia</span>
+              <span class="metric-bar"><span style="width:78%;"></span></span>
+              <span class="metric-value">78%</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="lib-block">
+          <span class="lib-block-label">Argument list (check marks violeta)</span>
+          <ul class="argument-list" style="max-width:400px;">
+            <li><span class="argument-marker">01</span><span style="color:var(--c-text-on-dark);">Mismo setup, sin distinciones.</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <nav class="footer-col" aria-label="Apex">
+        <h2 class="footer-heading">Apex</h2>
+        <ul>
+          <li><a href="index.html#diferencia">Acerca de</a></li>
+          <li><a href="index.html#equal-grid">Equal Grid</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Redes sociales">
+        <h2 class="footer-heading">Redes</h2>
+        <ul>
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
+      </nav>
+
+      <address class="footer-col footer-address">
+        <p>Asunción 2909<br>CABA</p>
+        <p><a href="tel:+5491122942520">+54 9 11 2294 2520</a></p>
+        <p><a href="mailto:info@apex.com">info@apex.com</a></p>
+      </address>
+    </div>
+
+    <svg class="footer-wordmark" viewBox="0 0 1177.86 209.25" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M153.74,0h86.9l59.87,209.25h-70.04l-9.88-38.07H63.55l34.64,10.68-17.98,27.39H0L153.74,0ZM208.08,122.06l-20.05-77.01-50.57,77.01h70.62Z"/>
+      <path d="M362.98,0h145.89c67.13,0,94.16,30.81,83.41,83.99-9.01,44.46-48.82,72.07-102.3,72.07h-91.84l-11.33,53.18h-68.88L362.98,0ZM489.11,102.01c22.67,0,34.29-5.52,38.36-23.25,3.78-17.44-5.52-23.54-28.19-23.54h-79.34l-10.17,46.79h79.34Z"/>
+      <path d="M637.31,0h213.31l-10.75,51.44h-143.86l-6.39,29.35h137.46l-9.88,47.08h-137.46l-6.39,29.93h143.86l-10.75,51.44h-213.9L637.31,0Z"/>
+      <path d="M957.28,101.72L875.03,0h80.79l50.57,66.84L1084.86,0h93l-133.1,110.44,80.5,98.81h-81.37l-51.73-66.55-75.56,66.55h-93.29l133.98-107.53Z"/>
+    </svg>
+  </footer>
+
+
+</body>
+</html>

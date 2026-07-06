@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equal Grid</title>
+  <meta name="description" content="Detalle completo de la academia Equal Grid de Apex. El programa integral de entrenamiento para pilotos y técnicos de sim racing de alto rendimiento.">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="detail-page">
+
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Apex — inicio">
+        <svg viewBox="0 0 1177.86 209.25" fill="currentColor" aria-hidden="true" focusable="false">
+          <path d="M153.74,0h86.9l59.87,209.25h-70.04l-9.88-38.07H63.55l34.64,10.68-17.98,27.39H0L153.74,0ZM208.08,122.06l-20.05-77.01-50.57,77.01h70.62Z"/>
+          <path d="M362.98,0h145.89c67.13,0,94.16,30.81,83.41,83.99-9.01,44.46-48.82,72.07-102.3,72.07h-91.84l-11.33,53.18h-68.88L362.98,0ZM489.11,102.01c22.67,0,34.29-5.52,38.36-23.25,3.78-17.44-5.52-23.54-28.19-23.54h-79.34l-10.17,46.79h79.34Z"/>
+          <path d="M637.31,0h213.31l-10.75,51.44h-143.86l-6.39,29.35h137.46l-9.88,47.08h-137.46l-6.39,29.93h143.86l-10.75,51.44h-213.9L637.31,0Z"/>
+          <path d="M957.28,101.72L875.03,0h80.79l50.57,66.84L1084.86,0h93l-133.1,110.44,80.5,98.81h-81.37l-51.73-66.55-75.56,66.55h-93.29l133.98-107.53Z"/>
+        </svg>
+      </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#objetivos">Objetivos</a></li>
+          <li><a href="#nuestro-plan">Nuestro Plan</a></li>
+          <li><a href="#equipo">El Equipo</a></li>
+          <li><a href="#faq">Preguntas Frecuentes</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú de navegación">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+      <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Presentación">
+      <div class="hero-media">
+        <picture>
+          <source media="(max-width:640px)" srcset="assets/hero-equalgrid-bg-mobile.png">
+          <img src="assets/hero-equalgrid-bg.png" loading="eager" alt="Box de simulación Apex con volante y pedales direct  drive, monitor curvo mostrando una pista de carreras">
+        </picture>
+        <div class="hero-equalgrid-overlay"></div>
+      </div>
+
+      <div class="container hero-content">
+        <h1 class="hero-title">Mismo setup. <br>Sin distinciones.</h1>
+        <p class="hero-sub">Equal Grid existe por eso. Porque si el hardware no distingue, el acceso tampoco debería.</p>
+        <a href="#argumento" class="btn btn-light">Conocé más <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+     
+      <!-- ============ ARGUMENTO EQUAL GRID ============ -->
+      <section class="section section-light" aria-labelledby="detail-section what-is-equal-grid" id="argumento">
+      <div class="container">
+        <div class="what-is-grid-layout">
+        <div class="what-is-content">
+          <h2 id="argument-title"><span class="text-accent">El argumento: técnico.</span><br>El impacto: real.</h2>
+          <p class="section-paragraph">En el sim racing, el talento pesa más que las diferencias físicas.</p>
+          <p class="section-paragraph">La verdadera brecha está en el acceso: menos oportunidades, menos comunidad y menos estructuras de desarrollo. Equal Grid nace para cambiar eso, ofreciendo un programa de alto rendimiento que amplía el acceso sin bajar el nivel competitivo.</p>
+          <ul class="argument-list">
+            <li><span class="argument-marker" aria-hidden="true">01</span>Más oportunidades.</li>
+            <li><span class="argument-marker" aria-hidden="true">02</span>Más representación.</li>
+            <li><span class="argument-marker" aria-hidden="true">03</span>Mismo nivel de exigencia.</li>
+          </ul>
+        </div>
+        <div class="what-is-media">
+          <img src="assets/equal-grid.png" alt="Simulador profesional de Apex de alto rendimiento">
+        </div>
+      </div>
+      </div>
+    </section>
+      
+<!-- ============ OBEJTIVOS ============ -->
+    <section class="section section-light" id="objetivos">
+      <div class="container">
+        <div class="section-head">
+        <h2><span class="text-accent">Seis Objetivos.</span><br>Un resultado: pilotos competitivas.</h2>
+        <p class="equalgrid-claim">Lo que vas a dominar al finalizar la formación integral.</p>
+        </div>
+        <div class="objectives-carousel" id="objectivesCarousel">
+          <div class="objectives-arrows">
+            <button class="objectives-carousel-arrow objectives-carousel-arrow-prev" id="objectivesPrev" type="button" aria-label="Objetivos anteriores">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="objectives-carousel-arrow objectives-carousel-arrow-next" id="objectivesNext" type="button" aria-label="Siguientes objetivos">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <div class="objectives-track" id="objectivesTrack">
+            <div class="objective-card">
+              <div class="objective-num">01</div>
+              <h3 class="objective-title">Diagnóstico Técnico de Base</h3>
+              <p class="section-paragraph">Identificar el nivel real de cada participante desde el primer día. Sin suposiciones, sin condescendencia. Solo datos.</p>
+            </div>
+            <div class="objective-card">
+              <div class="objective-num">02</div>
+              <h3 class="objective-title">Desarrollo Progresivo Medio</h3>
+              <p class="section-paragraph">Cada etapa exige objetivos medibles. El avance depende del rendimiento demostrado, nunca del tiempo transcurrido.</p>
+            </div>
+            <div class="objective-card">
+              <div class="objective-num">03</div>
+              <h3 class="objective-title">Psicología de rendimiento aplicada</h3>
+              <p class="section-paragraph">Entrenar la mente para competir bajo presión con foco, resiliencia y control de errores en cada sesión.</p>
+            </div>
+            <div class="objective-card">
+              <div class="objective-num">04</div>
+              <h3 class="objective-title">Acondicionamiento Físico Específico</h3>
+              <p class="section-paragraph">Preparación física específica para mejorar resistencia, postura y rendimiento durante sesiones largas y competencias.</p>
+            </div>
+            <div class="objective-card">
+              <div class="objective-num">05</div>
+              <h3 class="objective-title">Experiencia en Competencia Real</h3>
+              <p class="section-paragraph">Competencia real dentro de las ligas de Apex, con telemetría, análisis post-carrera y rivales que elevan el nivel.</p>
+            </div>
+            <div class="objective-card">
+              <div class="objective-num">06</div>
+              <h3 class="objective-title">Pathway hacia desarrollo avanzado</h3>
+              <p class="section-paragraph">Las mejores participantes acceden con prioridad a los programas de desarrollo de Apex según su rendimiento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <!-- ============ PLAN DE ESTUDIOS ============ -->
+    <section class="section section-light" id="nuestro-plan">
+    <div class="container">
+      <div class="section-head">
+        <h2><span class="text-accent">Doce semanas.</span><br>Cada una con un propósito.</h2>
+      </div>
+
+      <div id="curriculum-timeline">
+
+        <div class="curr-item">
+          <div class="curr-num">
+            <p class="curr-num-label">M01</p>
+          </div>
+          <div class="curr-content">
+            <h3>Fundamentos Técnicos</h3>
+            <p class="curr-difficulty">Dificultad: <span>Inicial</span></p>
+            <p class="curr-weeks">Semana 1 – 3</p>
+
+            <p class="curr-block-label">Habilidades Adquiridas</p>
+            <ul class="curr-list">
+              <li>Setup de cockpit</li>
+              <li>Ergonomía de pilotaje</li>
+              <li>Lectura básica de telemetría</li>
+              <li>Técnica de frenada</li>
+              <li>Control de aceleración</li>
+            </ul>
+
+            <p class="curr-block-label">Métricas del Piloto</p>
+            <ul class="curr-metrics">
+              <li><span class="metric-name">Consistencia</span><span class="metric-bar"><span style="width:75%"></span></span><span class="metric-value">+30</span></li>
+              <li><span class="metric-name">Precisión</span><span class="metric-bar"><span style="width:62%"></span></span><span class="metric-value">+25</span></li>
+              <li><span class="metric-name">Control</span><span class="metric-bar"><span style="width:50%"></span></span><span class="metric-value">+20</span></li>
+              <li><span class="metric-name">Confianza</span><span class="metric-bar"><span style="width:25%"></span></span><span class="metric-value">+10</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="curr-item">
+          <div class="curr-num">
+            <p class="curr-num-label">M02</p>
+          </div>
+          <div class="curr-content">
+            <h3>Rendimiento Bajo Análisis</h3>
+            <p class="curr-difficulty">Dificultad: <span>Intermedia</span></p>
+            <p class="curr-weeks">Semana 4 – 6</p>
+
+            <p class="curr-block-label">Habilidades Adquiridas</p>
+            <ul class="curr-list">
+              <li>Análisis de telemetría avanzada</li>
+              <li>Detección de pérdidas de tiempo</li>
+              <li>Gestión del error</li>
+              <li>Rutinas de foco</li>
+              <li>Trabajo con coach</li>
+            </ul>
+
+            <p class="curr-block-label">Métricas del Piloto</p>
+            <ul class="curr-metrics">
+              <li><span class="metric-name">Ritmo</span><span class="metric-bar"><span style="width:75%"></span></span><span class="metric-value">+30</span></li>
+              <li><span class="metric-name">Consistencia</span><span class="metric-bar"><span style="width:62%"></span></span><span class="metric-value">+25</span></li>
+              <li><span class="metric-name">Precisión</span><span class="metric-bar"><span style="width:50%"></span></span><span class="metric-value">+20</span></li>
+              <li><span class="metric-name">Análisis</span><span class="metric-bar"><span style="width:37%"></span></span><span class="metric-value">+15</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="curr-item">
+          <div class="curr-num">
+            <p class="curr-num-label">M03</p>
+          </div>
+          <div class="curr-content">
+            <h3>Preparación Física y Mental</h3>
+            <p class="curr-difficulty">Dificultad: <span>Avanzado</span></p>
+            <p class="curr-weeks">Semana 7 – 9</p>
+
+            <p class="curr-block-label">Habilidades Adquiridas</p>
+            <ul class="curr-list">
+              <li>Acondicionamiento físico</li>
+              <li>Psicología de competencia</li>
+              <li>Toma de decisiones bajo presión</li>
+              <li>Comunicación de equipo</li>
+              <li>Simulacros de clasificación</li>
+            </ul>
+
+            <p class="curr-block-label">Métricas del Piloto</p>
+            <ul class="curr-metrics">
+              <li><span class="metric-name">Resistencia</span><span class="metric-bar"><span style="width:75%"></span></span><span class="metric-value">+30</span></li>
+              <li><span class="metric-name">Foco</span><span class="metric-bar"><span style="width:62%"></span></span><span class="metric-value">+25</span></li>
+              <li><span class="metric-name">Reacción</span><span class="metric-bar"><span style="width:50%"></span></span><span class="metric-value">+20</span></li>
+              <li><span class="metric-name">Resiliencia</span><span class="metric-bar"><span style="width:50%"></span></span><span class="metric-value">+20</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="curr-item">
+          <div class="curr-num">
+            <p class="curr-num-label">M04</p>
+          </div>
+          <div class="curr-content">
+            <h3>Competencia y Evaluación</h3>
+            <p class="curr-difficulty">Dificultad: <span>Profesional</span></p>
+            <p class="curr-weeks">Semana 10 – 12</p>
+
+            <p class="curr-block-label">Habilidades Adquiridas</p>
+            <ul class="curr-list">
+              <li>Competencia en liga interna</li>
+              <li>Análisis de temporada</li>
+              <li>Interpretación de evolución</li>
+              <li>Presentación de performance</li>
+              <li>Preparación para selección avanzada</li>
+            </ul>
+
+            <p class="curr-block-label">Métricas del Piloto</p>
+            <ul class="curr-metrics">
+              <li><span class="metric-name">Performance</span><span class="metric-bar"><span style="width:87%"></span></span><span class="metric-value">+35</span></li>
+              <li><span class="metric-name">Consistencia</span><span class="metric-bar"><span style="width:75%"></span></span><span class="metric-value">+30</span></li>
+              <li><span class="metric-name">Adaptación</span><span class="metric-bar"><span style="width:62%"></span></span><span class="metric-value">+25</span></li>
+              <li><span class="metric-name">Ranking</span><span class="metric-bar"><span style="width:50%"></span></span><span class="metric-value">+20</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </section>
+
+    <!-- ============ EL EQUIPO ============ -->
+    <section class="detail-section team-section" id="equipo">
+      <div class="container">
+        <h2 class="section-title">El equipo técnico detrás del programa</h2>
+        <p class="section-subtitle">Tres especialistas. Tres disciplinas. Un objetivo compartido.</p>
+
+        <ul class="stats-carousel team-grid" id="teamCarousel" role="list">
+          <!-- Miembro 1 -->
+          <li class="stats-carousel-card team-card">
+            <button class="stat-reveal" type="button">
+              <img src="assets/rodrigo-salas.png" alt="Rodrigo Salas" loading="lazy" class="placeholder-gray">
+              <span class="stat-reveal-hint" aria-hidden="true">+</span>
+              <span class="stat-reveal-overlay">
+                <span class="team-name">Rodrigo Salas</span>
+                <span class="team-role">Director Técnico y head coach de pilotaje</span>
+              </span>
+            </button>
+          </li>
+          <!-- Miembro 2 -->
+          <li class="stats-carousel-card team-card">
+            <button class="stat-reveal" type="button">
+              <img src="assets/camila-ferreyra.png" alt="Dra. Camila Ferreyra" loading="lazy" class="placeholder-gray">
+              <span class="stat-reveal-hint" aria-hidden="true">+</span>
+              <span class="stat-reveal-overlay">
+                <span class="team-name">Dra. Camila Ferreyra</span>
+                <span class="team-role">Psicóloga deportiva de alto rendimiento</span>
+              </span>
+            </button>
+          </li>
+          <!-- Miembro 3 -->
+          <li class="stats-carousel-card team-card">
+            <button class="stat-reveal" type="button">
+              <img src="assets/florencia-ibanez.png" alt="Florencia Ibáñez" loading="lazy" class="placeholder-gray">
+              <span class="stat-reveal-hint" aria-hidden="true">+</span>
+              <span class="stat-reveal-overlay">
+                <span class="team-name">Florencia Ibáñez</span>
+                <span class="team-role">Preparadora física de motorsport</span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+  
+  <!-- ============ INVERSIÓN ============ -->
+    <section class="section section-dark" id="inversion">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Tu lugar en Equal Grid</h2>
+          <p class="section-subtitle">Programa completo de 12 semanas. Cupos limitados por cohorte.</p>
+        </div>
+
+        <div class="pricing-card">
+
+          <div class="pricing-includes-block">
+            <h3 class="pricing-includes-title">Qué incluye</h3>
+            <ul class="pricing-includes">
+              <li>Los 4 módulos de formación: técnica, análisis, físico-mental y competencia</li>
+              <li>Assessment inicial y evaluación final con informe individual</li>
+              <li>Sesiones de Telemetry Lab con coach técnico personal</li>
+              <li>Preparación física y psicológica específica para sim racing</li>
+              <li>Participación en la Liga Interna de Apex con registro oficial</li>
+              <li>Acceso prioritario a los programas de desarrollo avanzado según rendimiento</li>
+            </ul>
+          </div>
+
+          <div class="pricing-box">
+            <span class="pricing-label">Inversión total</span>
+            <span class="pricing-amount">$990.000</span>
+            <span class="pricing-detail">12 semanas <br> Pago único o en cuotas</span>
+            <a href="#inscripcion" class="btn btn-primary">Aplicar ahora <span class="arrow" aria-hidden="true">→</span></a>
+            <span class="pricing-note">Consultá por becas disponibles en el formulario de inscripción.</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    
+   <!-- ============ MOTTO MISION DE APEX ============ -->
+    <section class="section section-dark mission-section-bg">
+      <div class="mission-bg-overlay"></div>
+      <div class="container position-relative">
+        <p class="statement">
+          <span class="statement-line-wrap"><span class="statement-line statement-left">Queremos poner a la</span></span>
+          <span class="statement-line-wrap"><span class="statement-line statement-left"><span class="text-accent">primera mujer <br> latinoamericana</span></span></span>
+          <span class="statement-line-wrap"><span class="statement-line statement-left">en la grilla de un campeonato internacional.</span></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PREGUNTAS FRECUENTES ============ -->
+    <section class="detail-section faq-section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>PREGUNTAS FRECUENTES</h2>
+        </div>
+        
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-1">
+              <span class="faq-number">01</span>
+              <span class="faq-question">¿Necesito experiencia previa para aplicar?</span>
+              <span class="faq-icon-wrapper">
+                <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-panel" id="faq-answer-1" hidden>
+              <div class="faq-content">
+                <p>No es un requisito excluyente, pero sí buscamos participantes con motivación y disciplina. El Módulo 1 está diseñado para establecer bases técnicas sólidas desde cero, pero el programa exige compromiso y disposición para trabajar con datos.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-2">
+              <span class="faq-number">02</span>
+              <span class="faq-question">¿El programa tiene costo?</span>
+              <span class="faq-icon-wrapper">
+                <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-panel" id="faq-answer-2" hidden>
+              <div class="faq-content">
+                <p>Equal Grid es un programa de pago con aranceles accesibles y posibilidad de becas parciales. Trabajamos con WIGArg para identificar casos donde las barreras económicas no sean un obstáculo para el acceso al talento. Podes consultar su disponibilidad.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-3">
+              <span class="faq-number">03</span>
+              <span class="faq-question">¿Cuántas horas semanales requiere el programa?</span>
+              <span class="faq-icon-wrapper">
+                <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-panel" id="faq-answer-3" hidden>
+              <div class="faq-content">
+                <p>Entre cuatro y seis horas semanales, distribuidas en dos sesiones presenciales en las instalaciones de Apex. El programa está diseñado para ser compatible con trabajo o estudio, pero requiere regularidad y compromiso con las fechas de competencia.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-4">
+              <span class="faq-number">04</span>
+              <span class="faq-question">¿Qué pasa después de que termino el programa?</span>
+              <span class="faq-icon-wrapper">
+                <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-panel" id="faq-answer-4" hidden>
+              <div class="faq-content">
+                <p>Las participantes con métricas destacadas quedan en el registro de evaluación de Apex para acceso prioritario a los programas de desarrollo avanzado. No es una promesa vaga — es el objetivo concreto de la academia.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-5">
+              <span class="faq-number">05</span>
+              <span class="faq-question">¿Equal Grid es solo para personas sin experiencia?</span>
+              <span class="faq-icon-wrapper">
+                <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-panel" id="faq-answer-5" hidden>
+              <div class="faq-content">
+                <p>No. Si ya competís en ligas online o tenés experiencia en sim racing, el programa tiene capacidad de adaptarse a tu nivel a partir del assessment inicial. El objetivo es que cada participante mejore desde su punto de partida, no que todas partan del mismo lugar.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-6">
+              <span class="faq-number">06</span>
+              <span class="faq-question">¿El programa se repite o es una única edición?</span>
+              <span class="faq-icon-wrapper">
+                <svg class="faq-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-panel" id="faq-answer-6" hidden>
+              <div class="faq-content">
+                <p>Equal Grid se organiza en cohortes semestrales. Si esta edición ya cerró inscripción, podés dejar tus datos en el formulario y te vamos a contactar cuando abran los cupos de la próxima convocatoria, para que no te pierdas la oportunidad de participar.</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+   <!-- ============ CONTACTO ============ -->
+    <section class="detail-section contact-section" id="inscripcion">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2 class="section-title">Aplicá a Equal Grid</h2>
+          <p class="section-subtitle">Completá el formulario. Si hay cupos disponibles, te contactamos en menos de 72 horas.</p>
+        </div>
+
+        <div class="contact-form-container">
+          <form class="detail-contact-form" id="detailContactForm" novalidate>
+
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Nombre completo *</label>
+              <input type="text" id="contact-name" name="name" class="form-input" placeholder="Ej: Sol Roldan" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-age" class="form-label">Edad *</label>
+              <input type="number" id="contact-age" name="age" class="form-input" placeholder="Ej: 21" min="16" max="99" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Mail de contacto *</label>
+              <input type="email" id="contact-email" name="email" class="form-input" placeholder="nombre@correo.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-experience" class="form-label">¿Tenés experiencia previa en sim racing? *</label>
+              <select id="contact-experience" name="experience" class="form-input form-select" required>
+                <option value="" disabled selected hidden>Seleccioná una opción</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+                <option value="algo">Algo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contact-platforms" class="form-label">¿En qué plataformas competís actualmente? *</label>
+              <input type="text" id="contact-platforms" name="platforms" class="form-input" placeholder="Ej: iRacing, Assetto Corsa, etc." required>
+            </div>
+            <div class="form-group">
+              <div class="textarea-label-wrapper">
+                <label for="contact-reason" class="form-label">¿Por qué querés entrar a Equal Grid? *</label>
+                <span id="char-counter" class="char-counter">0 / 300</span>
+              </div>
+              <textarea id="contact-reason" name="reason" class="form-input form-textarea" maxlength="300" placeholder="Contanos tu motivación para formar parte..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="contact-scholarship" class="form-label">¿Necesitás información sobre becas? *</label>
+              <select id="contact-scholarship" name="scholarship" class="form-input form-select" required>
+                <option value="" disabled selected hidden>Seleccioná una opción</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <p class="form-disclaimer-required">* Campos Obligatorios</p>
+            <p class="form-disclaimer-privacy">Tus datos se usan exclusivamente para el proceso de selección de Equal Grid. No compartimos información con terceros.</p>
+            <a class="btn btn-primary">Enviar aplicación <span class="arrow" aria-hidden="true">→</span></a>
+          </form>
+        </div>
+
+        <figure class="contact-media">
+          <img src="assets/formulario-inscripcion.png" alt="" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <nav class="footer-col" aria-label="Apex">
+        <h2 class="footer-heading">Apex</h2>
+        <ul>
+          <li><a href="index.html#diferencia">Acerca de</a></li>
+          <li><a href="index.html#equal-grid">Equal Grid</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Redes sociales">
+        <h2 class="footer-heading">Redes</h2>
+        <ul>
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
+      </nav>
+
+      <address class="footer-col footer-address">
+        <p>Asunción 2909<br>CABA</p>
+        <p><a href="tel:+5491122942520">+54 9 11 2294 2520</a></p>
+        <p><a href="mailto:info@apex.com">info@apex.com</a></p>
+      </address>
+    </div>
+
+    <svg class="footer-wordmark" viewBox="0 0 1177.86 209.25" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M153.74,0h86.9l59.87,209.25h-70.04l-9.88-38.07H63.55l34.64,10.68-17.98,27.39H0L153.74,0ZM208.08,122.06l-20.05-77.01-50.57,77.01h70.62Z"/>
+      <path d="M362.98,0h145.89c67.13,0,94.16,30.81,83.41,83.99-9.01,44.46-48.82,72.07-102.3,72.07h-91.84l-11.33,53.18h-68.88L362.98,0ZM489.11,102.01c22.67,0,34.29-5.52,38.36-23.25,3.78-17.44-5.52-23.54-28.19-23.54h-79.34l-10.17,46.79h79.34Z"/>
+      <path d="M637.31,0h213.31l-10.75,51.44h-143.86l-6.39,29.35h137.46l-9.88,47.08h-137.46l-6.39,29.93h143.86l-10.75,51.44h-213.9L637.31,0Z"/>
+      <path d="M957.28,101.72L875.03,0h80.79l50.57,66.84L1084.86,0h93l-133.1,110.44,80.5,98.81h-81.37l-51.73-66.55-75.56,66.55h-93.29l133.98-107.53Z"/>
+    </svg>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
